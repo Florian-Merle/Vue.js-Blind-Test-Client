@@ -10,14 +10,6 @@ import router from './router';
 
 Vue.config.productionTip = false;
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>',
-});
-
 const httpLink = new HttpLink({
   // You should use an absolute URL here
   uri: 'http://localhost:4000/graphql',
@@ -38,8 +30,11 @@ const apolloProvider = new VueApollo({
   defaultClient: apolloClient,
 });
 
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
+  components: { App },
+  template: '<App/>',
   provide: apolloProvider.provide(),
-  render: h => h(App),
 });
