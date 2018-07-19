@@ -30,6 +30,6 @@ body {
   margin: 50px auto;
   padding: 10px;
   width: 960px;
-
+  overflow:auto;
 }
 </style>
