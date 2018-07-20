@@ -1,6 +1,7 @@
 <template>
   <div class="menu">
     <router-link :to="{ path: '/' }">Home</router-link>
+    <router-link :to="{ path: '/playlist/add' }">Add a playlist</router-link>
   </div>
 </template>
 
