@@ -34,7 +34,7 @@ export default {
         },
       });
 
-      this.$router.go('/playlist/edit/' + result.data.addPlaylist.id);
+      this.$router.go(`/playlist/edit/${result.data.addPlaylist.id}`);
     },
   },
 };

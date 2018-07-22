@@ -17,6 +17,15 @@ export default {
       },
     };
   },
+  props: ['playlistData'],
+  watch: {
+    playlistData: {
+      immediate: true,
+      handler(newVal) {
+        this.playlist = newVal;
+      },
+    },
+  },
   methods: {
     publish() {
       this.$emit('playlistPublished', this.playlist);
