@@ -22,6 +22,7 @@ export default {
     playlistData: {
       immediate: true,
       handler(newVal) {
+        if (!newVal) { return; }
         this.playlist = newVal;
       },
     },
