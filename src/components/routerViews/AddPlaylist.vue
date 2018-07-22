@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     async savePlaylist(playlist) {
-      await this.$apollo.mutate({
+      const result = await this.$apollo.mutate({
         mutation: gql`
           mutation($name: String, $genre: String) {
             addPlaylist(name: $name, genre: $genre) {
@@ -34,7 +34,7 @@ export default {
         },
       });
 
-      // TODO: redirect to edit page
+      this.$router.go(`/playlist/edit/${result.data.addPlaylist.id}`);
     },
   },
 };
