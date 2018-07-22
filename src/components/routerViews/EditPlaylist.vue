@@ -20,10 +20,21 @@ export default {
     playlistForm: PlaylistForm,
   },
   methods: {
-    // TODO: remove next line
-    // eslint-disable-next-line
     async savePlaylist(playlist) {
-      // TODO: update playlist
+      await this.$apollo.mutate({
+        mutation: gql`
+          mutation($id: ID, $name: String, $genre: String) {
+            updatePlaylist(id: $id, name: $name, genre: $genre) {
+              id
+            }
+          }
+        `,
+        variables: {
+          id: this.playlist.id,
+          name: playlist.title,
+          genre: playlist.genre,
+        },
+      });
     },
   },
   async created() {
@@ -42,6 +53,7 @@ export default {
     });
 
     this.playlist = {
+      id: this.$route.params.id,
       title: result.data.playlist.name,
       genre: result.data.playlist.genre,
     };
