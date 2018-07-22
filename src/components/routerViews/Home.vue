@@ -5,11 +5,24 @@
 </template>
 
 <script>
+import gql from 'graphql-tag';
+
 export default {
   name: 'Home',
   data() {
     return {
+      playlists: [],
     };
+  },
+  apollo: {
+    playlists: gql`
+      query {
+        playlists {
+          id
+          name
+          genre
+        }
+      }`,
   },
 };
 </script>
