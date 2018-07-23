@@ -39,6 +39,10 @@ export default {
         message: 'Playlist created',
       });
 
+      // clear cache
+      Object.values(this.$apollo.provider.clients)
+        .forEach(client => client.cache.reset());
+
       this.$router.push(`/playlist/edit/${result.data.addPlaylist.id}`);
     },
   },

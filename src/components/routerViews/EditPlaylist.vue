@@ -36,6 +36,10 @@ export default {
         },
       });
 
+      // clear cache
+      Object.values(this.$apollo.provider.clients)
+        .forEach(client => client.cache.reset());
+
       this.$eventBus.$emit('flash', {
         type: 'success',
         message: 'Playlist updated',
