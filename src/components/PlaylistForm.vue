@@ -6,7 +6,10 @@
     <div class="uk-margin">
       <input class="uk-input" type="text" placeholder="Genre" v-model="playlist.genre">
     </div>
-    <input class="uk-button uk-button-default" type="submit" value="Create" v-on:click="publish()">
+    <input class="uk-button uk-button-default"
+      type="submit"
+      v-model="action"
+      v-on:click="publish()">
   </div>
 </template>
 
@@ -19,6 +22,7 @@ export default {
         title: '',
         genre: '',
       },
+      create: true,
     };
   },
   props: ['playlistData'],
@@ -28,12 +32,18 @@ export default {
       handler(newVal) {
         if (!newVal) { return; }
         this.playlist = newVal;
+        this.create = false;
       },
     },
   },
   methods: {
     publish() {
       this.$emit('playlistPublished', this.playlist);
+    },
+  },
+  computed: {
+    action() {
+      return this.create ? 'Create' : 'Update';
     },
   },
 };
