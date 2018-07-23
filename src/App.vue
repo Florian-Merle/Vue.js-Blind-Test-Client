@@ -2,17 +2,20 @@
   <div id="app">
     <app-menu></app-menu>
     <div id="content" class="uk-container">
+      <flash></flash>
       <router-view/>
     </div>
   </div>
 </template>
 
 <script>
+import Flash from '@/components/Flash';
 import Menu from '@/components/Menu';
 
 export default {
   name: 'App',
   components: {
+    flash: Flash,
     'app-menu': Menu,
   },
 };

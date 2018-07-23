@@ -30,6 +30,9 @@ const apolloProvider = new VueApollo({
   defaultClient: apolloClient,
 });
 
+// Event Bus
+Vue.prototype.$eventBus = new Vue();
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
