@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ path: '/' }">
+  <router-link class="playlist-item" :to="{ path: '/' }">
     <div>
       <div class="playlist uk-card uk-card-default uk-card-hover uk-card-body">
         <h3 class="uk-card-title">{{ playlist.name }}</h3>
@@ -16,4 +16,7 @@ export default {
 </script>
 
 <style scoped>
+a.playlist-item {
+  text-decoration: none;
+}
 </style>
