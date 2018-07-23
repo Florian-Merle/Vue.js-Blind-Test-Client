@@ -35,6 +35,11 @@ export default {
           genre: playlist.genre,
         },
       });
+
+      this.$eventBus.$emit('flash', {
+        type: 'success',
+        message: 'Playlist updated',
+      });
     },
   },
   async created() {

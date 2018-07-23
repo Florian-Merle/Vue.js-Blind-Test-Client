@@ -34,6 +34,11 @@ export default {
         },
       });
 
+      this.$eventBus.$emit('flash', {
+        type: 'success',
+        message: 'Playlist created',
+      });
+
       this.$router.push(`/playlist/edit/${result.data.addPlaylist.id}`);
     },
   },
