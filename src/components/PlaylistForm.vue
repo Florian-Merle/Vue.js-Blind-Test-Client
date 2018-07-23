@@ -1,8 +1,12 @@
 <template>
   <div>
-    <input type="text" placeholder="Title" v-model="playlist.title">
-    <input type="text" placeholder="Genre" v-model="playlist.genre">
-    <input type="submit" value="Create" v-on:click="publish()">
+    <div class="uk-margin">
+      <input class="uk-input" type="text" placeholder="Title" v-model="playlist.title">
+    </div>
+    <div class="uk-margin">
+      <input class="uk-input" type="text" placeholder="Genre" v-model="playlist.genre">
+    </div>
+    <input class="uk-button uk-button-default" type="submit" value="Create" v-on:click="publish()">
   </div>
 </template>
 
@@ -36,19 +40,4 @@ export default {
 </script>
 
 <style scoped>
-input {
-  box-sizing: border-box;
-  display: block;
-  margin: 10px auto;
-  padding: 5px;
-  width: 60%;
-
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  outline: none;
-}
-
-input[type="text"]:focus {
-  border: 1px solid #f08800;
-}
 </style>

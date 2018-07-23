@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-menu></app-menu>
-    <div class="coll">
+    <div id="content" class="uk-container">
       <router-view/>
     </div>
   </div>
@@ -19,17 +19,7 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.coll {
-  background-color: #ccc;
-  margin: 50px auto;
-  padding: 10px;
-  width: 960px;
-  overflow:auto;
+#content {
+  margin-top: 10px;
 }
 </style>
