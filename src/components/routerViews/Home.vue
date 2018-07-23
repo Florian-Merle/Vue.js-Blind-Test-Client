@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Choose a playlist</h1>
-    <div class="playlists">
+    <div class="playlists uk-child-width-1-2@s uk-grid-match" uk-grid>
       <list-item
         v-for="playlist in playlists"
         :key="playlist.id"
