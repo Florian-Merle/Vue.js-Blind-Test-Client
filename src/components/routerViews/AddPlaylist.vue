@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
+import { ADD_PLAYLIST_MUTATION } from '@/graphql';
 import PlaylistForm from '@/components/PlaylistForm';
 
 export default {
@@ -21,13 +21,7 @@ export default {
   methods: {
     async savePlaylist(playlist) {
       const result = await this.$apollo.mutate({
-        mutation: gql`
-          mutation($name: String, $genre: String) {
-            addPlaylist(name: $name, genre: $genre) {
-              id
-            }
-          }
-        `,
+        mutation: ADD_PLAYLIST_MUTATION,
         variables: {
           name: playlist.title,
           genre: playlist.genre,
