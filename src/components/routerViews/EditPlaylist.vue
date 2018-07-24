@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
+import { PLAYLIST_QUERY, EDIT_PLAYLIST_MUTATION } from '@/graphql';
 import PlaylistForm from '@/components/PlaylistForm';
 
 export default {
@@ -22,23 +22,29 @@ export default {
   methods: {
     async savePlaylist(playlist) {
       await this.$apollo.mutate({
-        mutation: gql`
-          mutation($id: ID, $name: String, $genre: String) {
-            updatePlaylist(id: $id, name: $name, genre: $genre) {
-              id
-            }
-          }
-        `,
+        mutation: EDIT_PLAYLIST_MUTATION,
         variables: {
           id: this.playlist.id,
           name: playlist.title,
           genre: playlist.genre,
         },
-      });
+        update: (store, { data: { updatePlaylist } }) => {
+          try {
+            const query = {
+              query: PLAYLIST_QUERY,
+              variables: {
+                id: this.playlist.id,
+              },
+            };
 
-      // clear cache
-      Object.values(this.$apollo.provider.clients)
-        .forEach(client => client.cache.reset());
+            // manages cache
+            const data = store.readQuery(query);
+            data.playlist = updatePlaylist;
+
+            store.writeQuery({ ...query, data });
+          } catch(e) { console.log(e) } // eslint-disable-line
+        },
+      });
 
       this.$eventBus.$emit('flash', {
         type: 'success',
@@ -48,14 +54,7 @@ export default {
   },
   async created() {
     const result = await this.$apollo.query({
-      query: gql`
-        query($id: ID) {
-          playlist(id: $id) {
-            name
-            genre
-          }
-        }
-      `,
+      query: PLAYLIST_QUERY,
       variables: {
         id: this.$route.params.id,
       },

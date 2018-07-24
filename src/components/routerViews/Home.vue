@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
+import { ALL_PLAYLISTS_QUERY } from '@/graphql';
 import PlaylistListItem from '@/components/PlaylistListItem';
 
 export default {
@@ -35,14 +35,7 @@ export default {
     };
   },
   apollo: {
-    playlists: gql`
-      query {
-        playlists {
-          id
-          name
-          genre
-        }
-      }`,
+    playlists: ALL_PLAYLISTS_QUERY,
   },
   computed: {
     genres() {

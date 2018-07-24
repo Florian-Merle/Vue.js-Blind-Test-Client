@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
+import { ALL_PLAYLISTS_QUERY, ADD_PLAYLIST_MUTATION } from '@/graphql';
 import PlaylistForm from '@/components/PlaylistForm';
 
 export default {
@@ -21,16 +21,18 @@ export default {
   methods: {
     async savePlaylist(playlist) {
       const result = await this.$apollo.mutate({
-        mutation: gql`
-          mutation($name: String, $genre: String) {
-            addPlaylist(name: $name, genre: $genre) {
-              id
-            }
-          }
-        `,
+        mutation: ADD_PLAYLIST_MUTATION,
         variables: {
           name: playlist.title,
           genre: playlist.genre,
+        },
+        update(store, { data: { addPlaylist } }) {
+          try {
+            // manages cache
+            const data = store.readQuery({ query: ALL_PLAYLISTS_QUERY });
+            data.playlists.push(addPlaylist);
+            store.writeQuery({ query: ALL_PLAYLISTS_QUERY, data });
+          } catch(e) {} // eslint-disable-line
         },
       });
 
@@ -38,10 +40,6 @@ export default {
         type: 'success',
         message: 'Playlist created',
       });
-
-      // clear cache
-      Object.values(this.$apollo.provider.clients)
-        .forEach(client => client.cache.reset());
 
       this.$router.push(`/playlist/edit/${result.data.addPlaylist.id}`);
     },
