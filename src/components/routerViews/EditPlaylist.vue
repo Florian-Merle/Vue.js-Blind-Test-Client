@@ -28,11 +28,23 @@ export default {
           name: playlist.title,
           genre: playlist.genre,
         },
-      });
+        update: (store, { data: { updatePlaylist } }) => {
+          try {
+            const query = {
+              query: PLAYLIST_QUERY,
+              variables: {
+                id: this.playlist.id,
+              },
+            };
 
-      // clear cache
-      Object.values(this.$apollo.provider.clients)
-        .forEach(client => client.cache.reset());
+            // manages cache
+            const data = store.readQuery(query);
+            data.playlist = updatePlaylist;
+
+            store.writeQuery({ ...query, data });
+          } catch(e) { console.log(e) } // eslint-disable-line
+        },
+      });
 
       this.$eventBus.$emit('flash', {
         type: 'success',
