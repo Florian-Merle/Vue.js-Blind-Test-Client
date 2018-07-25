@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { PLAYLIST_QUERY, EDIT_PLAYLIST_MUTATION } from '@/graphql';
+import { PLAYLIST_QUERY_WITH_MUSICS, EDIT_PLAYLIST_MUTATION } from '@/graphql';
 import PlaylistForm from '@/components/PlaylistForm';
 
 export default {
@@ -31,7 +31,7 @@ export default {
         update: (store, { data: { updatePlaylist } }) => {
           try {
             const query = {
-              query: PLAYLIST_QUERY,
+              query: PLAYLIST_QUERY_WITH_MUSICS,
               variables: {
                 id: this.playlist.id,
               },
@@ -54,7 +54,7 @@ export default {
   },
   async created() {
     const result = await this.$apollo.query({
-      query: PLAYLIST_QUERY,
+      query: PLAYLIST_QUERY_WITH_MUSICS,
       variables: {
         id: this.$route.params.id,
       },

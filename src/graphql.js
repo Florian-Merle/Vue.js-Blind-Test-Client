@@ -19,6 +19,21 @@ const PLAYLIST_QUERY = gql`
   }
 `;
 
+const PLAYLIST_QUERY_WITH_MUSICS = gql`
+  query($id: ID) {
+    playlist(id: $id) {
+      name
+      genre
+      musics {
+        id
+        name
+        url
+        wrongAnswers
+      }
+    }
+  }
+`;
+
 const ADD_PLAYLIST_MUTATION = gql`
   mutation($name: String, $genre: String) {
     addPlaylist(name: $name, genre: $genre) {
@@ -42,6 +57,7 @@ const EDIT_PLAYLIST_MUTATION = gql`
 export {
   ALL_PLAYLISTS_QUERY,
   PLAYLIST_QUERY,
+  PLAYLIST_QUERY_WITH_MUSICS,
   ADD_PLAYLIST_MUTATION,
   EDIT_PLAYLIST_MUTATION,
 };
