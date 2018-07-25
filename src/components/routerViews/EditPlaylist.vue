@@ -2,12 +2,19 @@
   <div>
     <h1>Edit a playlist</h1>
     <playlist-form v-bind:playlistData="playlist" @playlistPublished="savePlaylist"></playlist-form>
+
+    <hr class="uk-divider-icon">
+
+    <div class="uk-margin">
+      <musics-form v-bind:playlist="playlist"></musics-form>
+    </div>
   </div>
 </template>
 
 <script>
 import { PLAYLIST_QUERY_WITH_MUSICS, EDIT_PLAYLIST_MUTATION } from '@/graphql';
 import PlaylistForm from '@/components/PlaylistForm';
+import MusicsForm from '@/components/MusicsForm';
 
 export default {
   name: 'EditPlaylist',
@@ -18,6 +25,7 @@ export default {
   },
   components: {
     playlistForm: PlaylistForm,
+    musicsForm: MusicsForm,
   },
   methods: {
     async savePlaylist(playlist) {
