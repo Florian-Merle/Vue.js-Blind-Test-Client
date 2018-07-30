@@ -40,11 +40,7 @@ export default {
       },
     });
 
-    this.playlist = {
-      id: this.$route.params.id,
-      name: result.data.playlist.name,
-      genre: result.data.playlist.genre,
-    };
+    this.playlist = Object.assign({}, this.playlist, result.data.playlist);
   },
   computed: {
     playPath() {
