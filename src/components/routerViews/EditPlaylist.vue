@@ -25,6 +25,7 @@ export default {
   },
   components: {
     playlistForm: PlaylistForm,
+    musicsForm: MusicsForm,
   },
   methods: {
     async savePlaylist(playlist) {
