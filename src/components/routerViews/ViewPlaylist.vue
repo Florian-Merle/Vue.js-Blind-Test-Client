@@ -1,7 +1,7 @@
 <template>
   <div class="uk-card uk-card-default">
     <div class="uk-card-header">
-      <h3 class="uk-card-title">{{ playlist.title }}</h3>
+      <h3 class="uk-card-title">{{ playlist.name }}</h3>
     </div>
 
     <div class="uk-card-body">
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
+import { PLAYLIST_QUERY } from '@/graphql';
 
 export default {
   name: 'ViewPlaylist',
@@ -34,14 +34,7 @@ export default {
   },
   async created() {
     const result = await this.$apollo.query({
-      query: gql`
-        query($id: ID) {
-          playlist(id: $id) {
-            name
-            genre
-          }
-        }
-      `,
+      query: PLAYLIST_QUERY,
       variables: {
         id: this.$route.params.id,
       },
@@ -49,7 +42,7 @@ export default {
 
     this.playlist = {
       id: this.$route.params.id,
-      title: result.data.playlist.name,
+      name: result.data.playlist.name,
       genre: result.data.playlist.genre,
     };
   },

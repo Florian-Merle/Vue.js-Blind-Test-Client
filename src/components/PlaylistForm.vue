@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="uk-margin">
-      <input class="uk-input" type="text" placeholder="Title" v-model="playlist.title">
+      <input class="uk-input" type="text" placeholder="Title" v-model="playlist.name">
     </div>
     <div class="uk-margin">
       <input class="uk-input" type="text" placeholder="Genre" v-model="playlist.genre">
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       playlist: {
-        title: '',
+        name: '',
         genre: '',
       },
       create: true,

@@ -25,7 +25,7 @@ export default {
         mutation: EDIT_PLAYLIST_MUTATION,
         variables: {
           id: this.playlist.id,
-          name: playlist.title,
+          name: playlist.name,
           genre: playlist.genre,
         },
         update: (store, { data: { updatePlaylist } }) => {
@@ -62,7 +62,7 @@ export default {
 
     this.playlist = {
       id: this.$route.params.id,
-      title: result.data.playlist.name,
+      name: result.data.playlist.name,
       genre: result.data.playlist.genre,
     };
   },
