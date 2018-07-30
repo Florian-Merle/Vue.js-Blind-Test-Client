@@ -23,7 +23,7 @@ export default {
       const result = await this.$apollo.mutate({
         mutation: ADD_PLAYLIST_MUTATION,
         variables: {
-          name: playlist.title,
+          name: playlist.name,
           genre: playlist.genre,
         },
         update(store, { data: { addPlaylist } }) {
