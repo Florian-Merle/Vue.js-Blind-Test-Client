@@ -13,6 +13,7 @@ const ALL_PLAYLISTS_QUERY = gql`
 const PLAYLIST_QUERY = gql`
   query($id: ID) {
     playlist(id: $id) {
+      id
       name
       genre
     }
@@ -22,6 +23,7 @@ const PLAYLIST_QUERY = gql`
 const PLAYLIST_QUERY_WITH_MUSICS = gql`
   query($id: ID) {
     playlist(id: $id) {
+      id
       name
       genre
       musics {
