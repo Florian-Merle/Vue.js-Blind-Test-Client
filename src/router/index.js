@@ -4,6 +4,8 @@ import Home from '@/components/routerViews/Home';
 import AddPlaylist from '@/components/routerViews/AddPlaylist';
 import EditPlaylist from '@/components/routerViews/EditPlaylist';
 import ViewPlaylist from '@/components/routerViews/ViewPlaylist';
+import AddMusic from '@/components/routerViews/AddMusic';
+import EditMusic from '@/components/routerViews/EditMusic';
 
 Vue.use(Router);
 
@@ -29,6 +31,16 @@ export default new Router({
       path: '/playlist/:id',
       name: 'ViewPlaylist',
       component: ViewPlaylist,
+    },
+    {
+      path: '/music/add/:playlistId',
+      name: 'AddMusic',
+      component: AddMusic,
+    },
+    {
+      path: '/music/edit/:id',
+      name: 'EditMusic',
+      component: EditMusic,
     },
   ],
 });
