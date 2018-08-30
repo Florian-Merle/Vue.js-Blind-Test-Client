@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { MUSIC_QUERY } from '@/graphql';
+import { MUSIC_QUERY, EDIT_MUSIC_MUTATION } from '@/graphql';
 import MusicForm from '@/components/MusicForm';
 import _ from 'lodash';
 
@@ -31,8 +31,36 @@ export default {
     this.music = _.cloneDeep(result.data.music);
   },
   methods: {
-    saveMusic() {
+    async saveMusic(music) {
+      this.music = {
+        id: this.music.id,
+        name: music.name,
+        url: music.url,
+        wrongAnswers: music.wrongAnswers,
+      };
 
+      await this.$apollo.mutate({
+        mutation: EDIT_MUSIC_MUTATION,
+        variables: this.music,
+        update(store, { data: { editMusic } }) {
+          try {
+            const query = {
+              query: MUSIC_QUERY,
+              variables: { id: editMusic.id },
+            };
+
+            // manages cache
+            const data = store.readQuery(query);
+            data.music = editMusic;
+            store.writeQuery({ ...query, data });
+          } catch(e) {} // eslint-disable-line
+        },
+      });
+
+      this.$eventBus.$emit('flash', {
+        type: 'success',
+        message: 'Music updated',
+      });
     },
   },
 };

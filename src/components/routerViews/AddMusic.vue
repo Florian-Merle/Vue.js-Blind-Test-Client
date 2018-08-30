@@ -20,7 +20,7 @@ export default {
         mutation: ADD_MUSIC_MUTATION,
         variables: {
           name: music.name,
-          url: music.genre,
+          url: music.url,
           wrongAnswers: music.wrongAnswers,
         },
       });
@@ -33,18 +33,16 @@ export default {
         },
         update(store, { data: { addMusicToPlaylist } }) {
           try {
-            // manages cache
             const query = {
               query: PLAYLIST_QUERY_WITH_MUSICS,
               variables: { id: addMusicToPlaylist.id },
             };
 
-            // TODO: resolve issue with cache
+            // manages cache
             const data = store.readQuery(query);
             data.playlist.musics.push(result.data.addMusic);
-            store.writeQuery(query, data);
-            // TODO: remove this console.log()
-          } catch(e) {console.log(e)} // eslint-disable-line
+            store.writeQuery({ ...query, data });
+          } catch(e) {} // eslint-disable-line
         },
       });
 
