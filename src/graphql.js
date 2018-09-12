@@ -97,6 +97,16 @@ mutation($idPlaylist: ID, $idMusic: ID) {
 }
 `;
 
+const DELETE_PLAYLIST_MUTATION = gql`
+mutation($id: ID) {
+  deletePlaylist(id: $id) {
+    id
+    name
+    genre
+  }
+}
+`;
+
 export {
   ALL_PLAYLISTS_QUERY,
   PLAYLIST_QUERY,
@@ -107,4 +117,5 @@ export {
   ADD_MUSIC_MUTATION,
   EDIT_MUSIC_MUTATION,
   ADD_MUSIC_TO_PLAYLIST_MUTATION,
+  DELETE_PLAYLIST_MUTATION,
 };
