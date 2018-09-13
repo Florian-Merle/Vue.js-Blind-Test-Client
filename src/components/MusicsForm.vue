@@ -11,7 +11,7 @@
     <div class="uk-child-width-1-1@s uk-grid-match" uk-grid>
       <div v-for="(music, index) in playlist.musics"
         v-bind:key="index">
-        <router-link class="music-item" :to="{ path: `/music/edit/${music.id}` }">
+        <router-link class="music-item" :to="{ path: `/music/edit/${playlist.id}/${music.id}` }">
           <div class="uk-card uk-card-default uk-card-hover uk-card-body">
             <h3 class="uk-card-title">{{ music.name }}</h3>
           </div>

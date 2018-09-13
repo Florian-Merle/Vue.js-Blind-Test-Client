@@ -36,6 +36,12 @@
       type="submit"
       v-model="action"
       v-on:click="publish()">
+
+    <input class="uk-button uk-button-default"
+      type="submit"
+      value="Delete"
+      v-show="!create"
+      v-on:click="remove()">
   </div>
 </template>
 
@@ -67,6 +73,9 @@ export default {
   methods: {
     publish() {
       this.$emit('musicPublished', this.music);
+    },
+    remove() {
+      this.$emit('musicRemoved');
     },
     addWrongAnswer() {
       this.music.wrongAnswers.push('');
