@@ -39,7 +39,7 @@ export default new Router({
       component: AddMusic,
     },
     {
-      path: '/music/edit/:id',
+      path: '/music/edit/:playlistId/:id',
       name: 'EditMusic',
       component: EditMusic,
     },

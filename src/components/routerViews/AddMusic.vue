@@ -51,7 +51,7 @@ export default {
         message: 'Music created',
       });
 
-      this.$router.push(`/music/edit/${result.data.addMusic.id}`);
+      this.$router.push(`/music/edit/${this.$route.params.playlistId}/${result.data.addMusic.id}`);
     },
   },
 };
