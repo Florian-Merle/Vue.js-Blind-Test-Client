@@ -5,7 +5,7 @@
     // TODO: player
 
     <div
-      class="uk-button uk-button-default"
+      class="uk-button uk-button-default uk-margin-small-bottom uk-width-1-1"
       v-for="(answer, index) in possibleAnswers"
       v-bind:key="`answer-${index}`"
       v-on:click="submitAnswer(answer)">
