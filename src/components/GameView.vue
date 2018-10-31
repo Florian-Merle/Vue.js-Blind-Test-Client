@@ -2,7 +2,7 @@
   <div>
     <h2>Find the title 🎶</h2>
 
-    // TODO: player
+    <music-player></music-player>
 
     <div
       class="uk-button uk-button-default uk-margin-small-bottom uk-width-1-1"
@@ -16,9 +16,13 @@
 
 <script>
 import _ from 'lodash';
+import MusicPlayer from '@/components/MusicPlayer';
 
 export default {
   name: 'GameView',
+  components: {
+    musicPlayer: MusicPlayer,
+  },
   props: ['music'],
   computed: {
     possibleAnswers() {
