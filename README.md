@@ -1,3 +1,24 @@
+# 🎶 GraphQL Blind Test Client
+
+GraphQL client for a Blind Test application using Vue.js
+
+
+## 🚀 Main packages & frameworks
+- Vue.js
+- Apollo
+- UIKit
+
+## What does the application looks like ?
+
+### Home
+![Screenshot](Screenshot_2.png)
+
+### Game View
+![Screenshot](Screenshot_1.png)
+
+### Playlist Edition
+![Screenshot](Screenshot_3.png)
+
 # vue-client
 
 > Vue.js client for a Blind Test application
