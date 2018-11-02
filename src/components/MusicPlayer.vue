@@ -1,5 +1,11 @@
 <template>
   <div>
+    <iframe
+      class="music-player"
+      allow="autoplay"
+      v-bind:src="iframeUrl">
+    </iframe>
+
     <div class="scene">
       <div id="turntable">
         <div id="arm"></div>
@@ -15,7 +21,23 @@
   </div>
 </template>
 
+<script>
+export default {
+  props: ['url'],
+  computed: {
+    iframeUrl() {
+      return `https://www.deezer.com/plugins/player?type=tracks&id=${this.url}&autoplay=true`;
+    },
+  },
+};
+</script>
+
+
 <style scoped>
+.music-player {
+  display: none;
+}
+
 .scene {
   transform: perspective(400px) rotateX(50deg);
   width: 550px;

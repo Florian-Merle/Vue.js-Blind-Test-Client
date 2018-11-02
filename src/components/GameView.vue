@@ -2,7 +2,8 @@
   <div>
     <h2>Find the title 🎶</h2>
 
-    <music-player></music-player>
+    <music-player v-bind:url="music.url">
+    </music-player>
 
     <div
       class="uk-button uk-button-default uk-margin-small-bottom uk-width-1-1"
