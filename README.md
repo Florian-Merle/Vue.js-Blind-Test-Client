@@ -11,13 +11,13 @@ GraphQL client for a Blind Test application using Vue.js
 ## What does the application looks like ?
 
 ### Home
-![Screenshot](Screenshot_2.png)
+![Screenshot](screenshot_2.png)
 
 ### Game View
-![Screenshot](Screenshot_1.png)
+![Screenshot](screenshot_1.png)
 
 ### Playlist Edition
-![Screenshot](Screenshot_3.png)
+![Screenshot](screenshot_3.png)
 
 # vue-client
 
